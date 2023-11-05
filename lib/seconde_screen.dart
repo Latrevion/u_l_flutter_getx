@@ -22,7 +22,8 @@ class SecondScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20)),
               onPressed: () {
                 ///Get.offAll is not previous route
-                Get.offAll(const HomeScreen());
+                // Get.offAll(const HomeScreen());
+                Get.offAllNamed('/');
               },
               child: const Text('home screen'),
             ),

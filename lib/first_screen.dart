@@ -21,7 +21,8 @@ class FirstScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               onPressed: () {
-                Get.to(const SecondScreen());
+                // Get.to(const SecondScreen());
+                Get.toNamed('/secondPage');
               },
               child: const Text('second screen'),
             ),
