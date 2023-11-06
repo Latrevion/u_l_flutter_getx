@@ -3,11 +3,15 @@ import 'package:get/get.dart';
 class HomeController extends GetxController{
   String name ='Luke';
 
-  int index = 0;
+  // getbuilder+update
+  // int index = 0;
+
+  RxInt index= 0.obs;
 
   void increaseIndex(){
-    index++;
-    update();
+    index.value++;
+
+    // update();
     ///this is set state
   }
 }

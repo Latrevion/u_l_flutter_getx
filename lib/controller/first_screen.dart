@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:udemy/controller/first_screen.dart';
-import 'package:udemy/controller/home_controller.dart';
+import 'home_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('home screen'),
+        title: const Text('First Screen'),
         centerTitle: true,
-        actions: [
-          TextButton(onPressed: (){
-          Get.to(const FirstScreen());
-          }, child:const Text('NEXT',style: TextStyle(color: Colors.white),))
-        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // GetBuilder<HomeController>(
           GetX<HomeController>(
               init: HomeController(),
               builder: (controller) {
@@ -41,8 +34,6 @@ class HomeScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         onPressed: () {
-                          // Get.to(const FirstScreen());
-                          // Get.toNamed('/firstPage');
                           controller.increaseIndex();
                         },
                         child: const Text('first screen'),
