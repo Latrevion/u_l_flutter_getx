@@ -1,4 +1,4 @@
-# udemy
+# GetX
 
 A new Flutter project.
 

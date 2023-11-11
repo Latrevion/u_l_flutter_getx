@@ -1,17 +1,18 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController{
-  String name ='Luke';
-
-  // getbuilder+update
-  // int index = 0;
-
+  String name ='';
   RxInt index= 0.obs;
 
   void increaseIndex(){
     index.value++;
-
-    // update();
+    update();
     ///this is set state
   }
+
+  void displayName(){
+    name ='Luke';
+    update();
+  }
+
 }

@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'home_controller.dart';
 
 class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+    FirstScreen({super.key});
+
+  final controller =Get.put(HomeController(),permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -16,32 +18,28 @@ class FirstScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GetX<HomeController>(
+          GetBuilder<HomeController>(
               init: HomeController(),
               builder: (controller) {
-                return Column(
-                  children: [
-                    Text(
-                      controller.index.value.toString(),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: MaterialButton(
-                        textColor: Colors.white,
-                        color: Colors.red,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        onPressed: () {
-                          controller.increaseIndex();
-                        },
-                        child: const Text('first screen'),
-                      ),
-                    )
-                  ],
+                return Text(
+                  controller.name,
+                  style: Theme.of(context).textTheme.headlineLarge,
+                  textAlign: TextAlign.center,
                 );
               }),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: MaterialButton(
+              textColor: Colors.white,
+              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0)),
+              onPressed: () {
+                      controller.displayName();
+              },
+              child: const Text('display name'),
+            ),
+          )
         ],
       ),
     );
