@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:udemy/controller/second_controller.dart';
 import '../../controller/home_controller.dart';
 import 'second_screen.dart';
 import 'first_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-   const HomeScreen({super.key});
+     HomeScreen({super.key});
 
-  // final controller = Get.lazyPut(()=> HomeController(),fenix: true);
+    HomeController controller1 =Get.find();
+  final  SecondController controller =Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
