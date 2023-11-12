@@ -5,9 +5,9 @@ import 'second_screen.dart';
 import 'first_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
+   const HomeScreen({super.key});
 
-  // final controller = Get.lazyPut(()=> HomeController());
+  // final controller = Get.lazyPut(()=> HomeController(),fenix: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

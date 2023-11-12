@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController{
+class SecondController extends GetxController{
   String name ='';
   RxInt index= 0.obs;
 
@@ -18,20 +18,20 @@ class HomeController extends GetxController{
 
   @override
   void onInit() {
-    print('init');
+    print('init 2');
     super.onInit();
   }
 
 @override
   void onReady() {
-  print('ready ');
+  print('ready 2');
      //when your controller  is created
     super.onReady();
   }
 
   @override
   void onClose() {
-    print('close');
+    print('close 2');
     //when your close your controller
     super.onClose();
   }
