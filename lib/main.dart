@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page:()=>const HomeScreen(),transition: Transition.rightToLeft),
+        GetPage(name: '/', page:()=>  HomeScreen(),transition: Transition.rightToLeft),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
