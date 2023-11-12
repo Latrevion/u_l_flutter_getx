@@ -5,8 +5,7 @@ import '../../controller/home_controller.dart';
 class FirstScreen extends StatelessWidget {
     FirstScreen({super.key});
 
-  final controller =Get.put(HomeController(),permanent: true);
-
+  HomeController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,6 @@ class FirstScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GetBuilder<HomeController>(
-              init: HomeController(),
               builder: (controller) {
                 return Text(
                   controller.name,

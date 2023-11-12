@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:udemy/home_binding.dart';
 import 'package:udemy/view/screens/home_screen.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
+      initialBinding: HomeBindings(),
       getPages: [
         GetPage(name: '/', page:()=>  HomeScreen(),transition: Transition.rightToLeft),
       ],

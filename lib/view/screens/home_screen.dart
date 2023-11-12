@@ -6,11 +6,10 @@ import 'first_screen.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
-  final controller = Get.put( HomeController());
+
   // final controller = Get.lazyPut(()=> HomeController());
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('home screen'),
