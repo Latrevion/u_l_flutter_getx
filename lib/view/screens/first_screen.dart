@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:udemy/component.dart';
 import '../../controller/home_controller.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -72,7 +73,14 @@ class _FirstScreenState extends State<FirstScreen> {
               child: const Text('delete name'),
             ),
           ),
-          Text('hello'.tr,textAlign: TextAlign.center,style: Theme.of(context).textTheme.headlineLarge,),
+          Wrap(
+            children: [
+          CustomText(text:'hello'.tr),
+          CustomText(text:'Home Screen'.tr),
+          CustomText(text:'English'.tr),
+          CustomText(text:'Arabic'.tr),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: MaterialButton(
