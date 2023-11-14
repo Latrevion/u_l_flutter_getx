@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:udemy/component.dart';
 import '../../controller/home_controller.dart';
 
 class FirstScreen extends StatefulWidget {
-    FirstScreen({super.key});
+  const FirstScreen({super.key});
 
   @override
   State<FirstScreen> createState() => _FirstScreenState();
@@ -22,86 +21,63 @@ class _FirstScreenState extends State<FirstScreen> {
         title: const Text('First Screen'),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GetBuilder<HomeController>(
-              builder: (controller) {
-                return Text(
-                  controller.name,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                  textAlign: TextAlign.center,
-                );
-              }),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: MaterialButton(
-              textColor: Colors.white,
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              onPressed: () {
-                      controller.displayName();
-              },
-              child: const Text('display name'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: MaterialButton(
-              textColor: Colors.white,
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              onPressed: () {
-                controller.getTheSavedName();
-              },
-              child: const Text('get name'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: MaterialButton(
-              textColor: Colors.white,
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              onPressed: () {
-                controller.removeSavedName();
-              },
-              child: const Text('delete name'),
-            ),
-          ),
-          Wrap(
-            children: [
-          CustomText(text:'hello'.tr),
-          CustomText(text:'Home Screen'.tr),
-          CustomText(text:'English'.tr),
-          CustomText(text:'Arabic'.tr),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: MaterialButton(
-              textColor: Colors.white,
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              onPressed: () {
-                if(Get.locale==const Locale('en')){
-                  Get.updateLocale(const Locale('ar'));
-                  box.write('lang','ar');
-                }else{
-                  Get.updateLocale(const Locale('en'));
-                  box.write('lang','en');
-                }
-              },
-              child:   Text('language'.tr),
-            ),
-          ),
-        ],
-      ),
+      body: GetBuilder<HomeController>(builder: (controller) {
+        if (controller.newsApi != null) {
+          return ListView.builder(
+              itemCount: controller.newsApi!.articles.length,
+              itemBuilder: (context, index) => SizedBox(
+                    height: 200,
+                    child: Card(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Image(
+                              image: NetworkImage(controller
+                                      .newsApi!.articles[index].urlToImage
+                                      .toString()),
+                              fit: BoxFit.fill,
+                              height: double.infinity,
+                            ),
+                          ),
+                          const SizedBox(width: 10,),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              children: [
+                                const  SizedBox(
+                                  height: 16,
+                                ),
+                                Text(controller.newsApi!.articles[index].author
+                                    .toString(),style: Theme.of(context).textTheme.bodySmall,),
+                              const   SizedBox(
+                                  height: 16,
+                                ),
+                                Text(controller.newsApi!.articles[index].title
+                                    .toString(),style: Theme.of(context).textTheme.titleMedium,),
+                               const  SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  controller
+                                      .newsApi!.articles[index].description
+                                      .toString(),
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                  maxLines: 2,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ));
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      }),
     );
   }
 }

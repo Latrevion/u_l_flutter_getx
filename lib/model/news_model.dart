@@ -1,0 +1,71 @@
+class NewsApi {
+  NewsApi({
+    required this.status,
+    required this.totalResults,
+    required this.articles,
+  });
+  late final String status;
+  late final int totalResults;
+  late final List<Articles> articles;
+
+  NewsApi.fromJson(Map<String, dynamic> json){
+    status = json['status'];
+    totalResults = json['totalResults'];
+    articles = List.from(json['articles']).map((e)=>Articles.fromJson(e)).toList();
+  }
+
+  // Map<String, dynamic> toJson() {
+  //   final _data = <String, dynamic>{};
+  //   _data['status'] = status;
+  //   _data['totalResults'] = totalResults;
+  //   _data['articles'] = articles.map((e)=>e.toJson()).toList();
+  //   return _data;
+  // }
+}
+
+class Articles {
+  Articles({
+    required this.source,
+    this.author,
+    required this.title,
+    this.description,
+    required this.url,
+    this.urlToImage,
+    required this.publishedAt,
+    // this.content,
+  });
+  late final Source source;
+  late final String? author;
+  late final String title;
+  late final String? description;
+  late final String url;
+  late final String? urlToImage;
+  late final String publishedAt;
+  // late final String? content;
+
+  Articles.fromJson(Map<String, dynamic> json){
+    source = Source.fromJson(json['source']);
+    author = json['author']??'';
+    title = json['title'];
+    description = json['description']??'';
+    url = json['url'];
+    urlToImage = json['urlToImage']??'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ31uFUGz2lw6IIy2aNY9b1cD1LM145vQ23hEMXeAw&s';
+    publishedAt = json['publishedAt'];
+    // content = null;
+  }
+
+}
+
+class Source {
+  Source({
+    this.id,
+    required this.name,
+  });
+  late final String? id;
+  late final String name;
+
+  Source.fromJson(Map<String, dynamic> json){
+    id = null;
+    name = json['name'];
+  }
+}

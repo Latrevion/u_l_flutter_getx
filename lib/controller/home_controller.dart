@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:udemy/service/news_service.dart';
+import '../model/news_model.dart';
 
 class HomeController extends GetxController{
   String name ='';
@@ -35,8 +37,16 @@ class HomeController extends GetxController{
 
   @override
   void onInit() {
-    print('init');
+    getNewsData();
+    print('on init');
     super.onInit();
+  }
+
+  NewsApi?newsApi;
+
+  void getNewsData() async{
+   newsApi=await NewsServices().getNewsData();
+   update();
   }
 
 @override
